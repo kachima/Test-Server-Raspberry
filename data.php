@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-$conn = mysqli_connect("localhost","root","123456","temp");
+$conn = mysqli_connect("localhost","root","123456","temp"); //change database and password
 
-$sqlQuery = "SELECT * FROM log";
+$sqlQuery = "SELECT * FROM temp_log"; //select table
 
 $result = mysqli_query($conn,$sqlQuery);
 

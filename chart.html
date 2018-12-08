@@ -28,7 +28,7 @@
         $(document).ready(function () {
             showGraph();
         });
-
+        //set time reset graphic
 
         function showGraph() {
             {
@@ -37,10 +37,10 @@
                         console.log(data);
                         var index = [];
                         var value = [];
-
+                        //change name column
                         for (var i in data) {
-                            index.push(data[i].idx);
-                            value.push(data[i].value);
+                            index.push(data[i].STT);
+                            value.push(data[i].temperature);
                         }
 
                         var chartdata = {
@@ -61,7 +61,16 @@
 
                         var barGraph = new Chart(graphTarget, {
                             type: 'line',
-                            data: chartdata
+                            data: chartdata,
+                            options: {
+                                animation: {
+                                    duration: 0
+                                },
+                                scaleOverride: true,
+                                scaleSteps: 10,
+                                scaleStepWidth: 50,
+                                scaleStartValue: 0
+                            }
                         });
                     });
             }

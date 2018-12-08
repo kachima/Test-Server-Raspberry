@@ -9,8 +9,8 @@ int main(void) {
 
    char *server = "localhost";
    char *user = "root";
-   char *password = "123456"; /* set me first */
-   char *database = "temp";
+   char *password = "123456"; //change password 
+   char *database = "temp";   //change database
    
    
 
@@ -41,7 +41,7 @@ int main(void) {
       char cmd[200];
       int randonnumber = rand() % 100;
 
-      sprintf(cmd,"insert into log (idx,value) values (%d,%d)",i,randonnumber);
+      sprintf(cmd,"insert into log (STT,temperature) values (%d,%.2f)",i,randonnumber);//change name column
       //printf(cmd);
       mysql_query(conn, cmd);
    }  
