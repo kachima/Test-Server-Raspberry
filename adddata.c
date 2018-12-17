@@ -1,7 +1,7 @@
 #include <mysql.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <unistd.h>  
 
 int main(void)
 {
@@ -12,7 +12,7 @@ int main(void)
    char *server = "localhost";
    char *user = "root";
    char *password = "123456"; //change password
-   char *database = "temp";   //change database
+   char *database = "nhietdo";   //change database
 
    conn = mysql_init(NULL);
 
@@ -42,7 +42,11 @@ int main(void)
    while (1)
    {
       int randonnumber = rand() % 100;
-      sprintf(cmd, "insert into temp_log (temperature) values (%d)", randonnumber); //change name column
+      sprintf(cmd, "insert into docnhietdo (temperature) values (%d)", randonnumber); //change name column
+      mysql_query(conn, cmd);
+      sprintf(cmd, "insert into docdoam (humidity) values (%d)", randonnumber); //change name column
+      mysql_query(conn, cmd);
+      sprintf(cmd, "insert into docmucsang (lux) values (%d)", randonnumber); //change name column
       mysql_query(conn, cmd);
       sleep(10);
    }
@@ -51,3 +55,7 @@ int main(void)
    mysql_close(conn);
    return 0;
 }
+
+//create table templog(stt int NOT NULL AUTO_INCREMENT PRIMARY KEY,temperature float(5,2) not null);
+//create table docnhietdo(stt int NOT NULL AUTO_INCREMENT PRIMARY KEY,date_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, temperature FLOAT(5,2) NOT NULL);
+//SELECT time(date_time),temperature FROM (SELECT * FROM docnhietdo ORDER BY STT DESC LIMIT 50) sub ORDER BY STT ASC
