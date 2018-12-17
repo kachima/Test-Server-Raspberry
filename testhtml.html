@@ -105,13 +105,14 @@
                         var value = [];
                         //change name column
                         for (var i in data) {
-                            //index.push(data[i].STT);
+                            index.push(data[i].time(date_time));
                             value.push(data[i].temperature);
                         }
+                        /*
                         var j;
                         for (j = 1; j < 51; j++) {
                             index.push(j);
-                        }
+                        }*/
 
                         var chartdata = {
                             labels: index,
